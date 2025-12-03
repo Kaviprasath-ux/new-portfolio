@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { inter } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Kavi Prasath | UI/UX Designer",
@@ -28,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased bg-white dark:bg-black text-black dark:text-white">
+      <body className={`${inter.variable} font-sans antialiased bg-white dark:bg-black text-black dark:text-white`}>
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

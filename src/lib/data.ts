@@ -147,21 +147,21 @@ export const tools = [
 
 export const experience = [
   {
-    role: "Senior UI/UX Designer",
-    company: "Tech Innovators Inc.",
-    period: "2022 - Present",
-    description: "Leading design initiatives for enterprise SaaS products, collaborating with cross-functional teams to deliver exceptional user experiences.",
+    role: "UI/UX Designer",
+    company: "Baarez Technology Solutions",
+    period: "Oct 2024 - Present",
+    description: "Leading end-to-end UI/UX design for hospitality and enterprise solutions, including PMS platforms and dashboards. Collaborating cross-functionally with remote teams to deliver scalable, user-centered product experiences.",
   },
   {
     role: "Product Designer",
-    company: "Creative Studios",
-    period: "2020 - 2022",
-    description: "Designed and shipped multiple mobile applications, establishing design systems and mentoring junior designers.",
+    company: "BIS Technology",
+    period: "Apr 2024 - Oct 2024",
+    description: "Owned product design for AI-driven platforms, shaping user flows and interface systems from concept to delivery. Established design system foundations and contributed to strategic product decisions.",
   },
   {
-    role: "UI Designer",
-    company: "Digital Agency",
-    period: "2018 - 2020",
-    description: "Created visually compelling interfaces for various clients across industries including fintech, healthcare, and e-commerce.",
+    role: "UI/UX Designer",
+    company: "Digimeta.dev",
+    period: "Jan 2023 - Apr 2024",
+    description: "Designed mobile apps, web platforms, and fundraiser dashboards for Web3 startups—including Pocket Donation App and Flaimed dating ecosystem. Delivered high-impact landing pages and motion design assets.",
   },
 ];

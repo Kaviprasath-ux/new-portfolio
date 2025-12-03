@@ -6,6 +6,9 @@ import SectionLabel from "@/components/SectionLabel";
 import Button from "@/components/Button";
 import { socialLinks } from "@/lib/data";
 
+// Get your free access key from https://web3forms.com
+const WEB3FORMS_ACCESS_KEY = "208ca774-b486-4459-869e-ea95422bb0a1";
+
 const projectTypes = [
   "UI/UX Design",
   "Mobile App Design",
@@ -24,6 +27,7 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -37,13 +41,37 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError("");
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          subject: `New Portfolio Inquiry: ${formData.projectType}`,
+          message: formData.message,
+          project_type: formData.projectType,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", projectType: "", message: "" });
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", projectType: "", message: "" });
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -71,10 +99,10 @@ export default function ContactPage() {
                 Email
               </h3>
               <a
-                href="mailto:hello@kaviprasath.com"
+                href="mailto:kaviprasanth666@gmail.com"
                 className="text-xl hover:text-muted transition-colors"
               >
-                hello@kaviprasath.com
+                kaviprasanth666@gmail.com
               </a>
             </div>
 
@@ -248,6 +276,11 @@ export default function ContactPage() {
                     placeholder="Tell me about your project..."
                   />
                 </div>
+
+                {/* Error Message */}
+                {error && (
+                  <p className="text-red-500 text-sm">{error}</p>
+                )}
 
                 {/* Submit Button */}
                 <Button
