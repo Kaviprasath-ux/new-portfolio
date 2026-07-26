@@ -1,0 +1,62 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#F8FAFC"/>
+  <path d="M0 0h1200v900H0z" fill="url(#grid)" opacity=".65"/>
+  <rect x="92" y="78" width="1016" height="700" rx="26" fill="#FFFFFF" stroke="#DDE5F1" stroke-width="2"/>
+  <rect x="130" y="118" width="940" height="54" rx="18" fill="#F8FBFF" stroke="#DDE5F1"/>
+  <circle cx="166" cy="145" r="9" fill="#FF6B4A"/>
+  <circle cx="194" cy="145" r="9" fill="#FFD166"/>
+  <circle cx="222" cy="145" r="9" fill="#70E000"/>
+  <rect x="880" y="132" width="148" height="26" rx="13" fill="#E7F8DB"/>
+  <text x="914" y="150" fill="#147A39" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">72% READY</text>
+
+  <rect x="130" y="206" width="220" height="526" rx="18" fill="#F8FBFF" stroke="#DDE5F1"/>
+  <rect x="166" y="242" width="54" height="54" rx="14" fill="#EEF4FF"/>
+  <path d="M193 254c-16 0-25 11-25 25 0 18 25 39 25 39s25-21 25-39c0-14-9-25-25-25zm0 34a9 9 0 1 1 0-18 9 9 0 0 1 0 18z" fill="#2667FF" transform="scale(.48) translate(297 282)"/>
+  <rect x="238" y="254" width="86" height="12" rx="6" fill="#243044" opacity=".55"/>
+  <rect x="238" y="278" width="56" height="10" rx="5" fill="#AAB8CF"/>
+  <rect x="166" y="344" width="148" height="34" rx="10" fill="#2667FF"/>
+  <rect x="184" y="356" width="80" height="10" rx="5" fill="#FFFFFF" opacity=".9"/>
+  <rect x="166" y="400" width="122" height="28" rx="9" fill="#FFFFFF" stroke="#DDE5F1"/>
+  <rect x="166" y="446" width="132" height="28" rx="9" fill="#FFFFFF" stroke="#DDE5F1"/>
+  <rect x="166" y="492" width="112" height="28" rx="9" fill="#FFFFFF" stroke="#DDE5F1"/>
+  <rect x="166" y="538" width="142" height="28" rx="9" fill="#FFFFFF" stroke="#DDE5F1"/>
+
+  <rect x="388" y="206" width="682" height="526" rx="18" fill="#FFFFFF" stroke="#DDE5F1"/>
+  <text x="430" y="262" fill="#2667FF" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">MOVE PROFILE</text>
+  <text x="430" y="306" fill="#151515" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="800">India to Berlin</text>
+  <text x="430" y="338" fill="#5B6677" font-family="Arial, Helvetica, sans-serif" font-size="19">Spouse, child, documents, offer, housing, school</text>
+  <rect x="872" y="254" width="150" height="48" rx="16" fill="#E7F8DB"/>
+  <text x="910" y="284" fill="#147A39" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="800">READY</text>
+
+  <rect x="430" y="382" width="278" height="156" rx="18" fill="#F8FAFC" stroke="#DDE5F1"/>
+  <text x="462" y="424" fill="#151515" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Next best action</text>
+  <text x="462" y="460" fill="#5B6677" font-family="Arial, Helvetica, sans-serif" font-size="15">Confirm school admission timeline</text>
+  <rect x="462" y="498" width="198" height="10" rx="5" fill="#DFE7F3"/>
+  <rect x="462" y="498" width="142" height="10" rx="5" fill="#2667FF"/>
+
+  <rect x="738" y="382" width="284" height="156" rx="18" fill="#F8FAFC" stroke="#DDE5F1"/>
+  <text x="770" y="424" fill="#151515" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Case confidence</text>
+  <rect x="770" y="456" width="180" height="9" rx="4.5" fill="#DFE7F3"/>
+  <rect x="770" y="456" width="132" height="9" rx="4.5" fill="#2667FF"/>
+  <rect x="770" y="486" width="180" height="9" rx="4.5" fill="#DFE7F3"/>
+  <rect x="770" y="486" width="102" height="9" rx="4.5" fill="#FFD166"/>
+
+  <rect x="430" y="574" width="592" height="64" rx="16" fill="#FFFFFF" stroke="#DDE5F1"/>
+  <rect x="462" y="590" width="32" height="32" rx="8" fill="#EEF4FF"/>
+  <rect x="516" y="590" width="178" height="12" rx="6" fill="#243044" opacity=".48"/>
+  <rect x="516" y="614" width="282" height="10" rx="5" fill="#AAB8CF"/>
+  <text x="888" y="613" fill="#B34C2F" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800">BLOCKED</text>
+  <rect x="430" y="656" width="592" height="64" rx="16" fill="#FFFFFF" stroke="#DDE5F1"/>
+  <rect x="462" y="672" width="32" height="32" rx="8" fill="#FFF0CF"/>
+  <rect x="516" y="672" width="206" height="12" rx="6" fill="#243044" opacity=".48"/>
+  <rect x="516" y="696" width="244" height="10" rx="5" fill="#AAB8CF"/>
+  <text x="904" y="695" fill="#2667FF" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800">ACTIVE</text>
+
+  <text x="92" y="838" fill="#151515" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="800">Glimmora Relocate</text>
+  <text x="92" y="872" fill="#5B6677" font-family="Arial, Helvetica, sans-serif" font-size="19">From relocation uncertainty to execution confidence</text>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#2667FF" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+</svg>

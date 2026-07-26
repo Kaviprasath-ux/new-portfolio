@@ -11,30 +11,33 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  // dark header on the dark-themed pages
+  const isHome =
+    pathname === "/" ||
+    pathname.startsWith("/work") ||
+    pathname === "/about" ||
+    pathname === "/contact";
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
+  useEffect(() => setIsMobileMenuOpen(false), [pathname]);
 
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
+
+  const scrolledBg = isScrolled
+    ? isHome
+      ? "border-b border-white/10 bg-neutral-950/70 backdrop-blur-xl py-3"
+      : "glass py-3"
+    : "bg-transparent py-5";
 
   return (
     <>
@@ -42,12 +45,10 @@ export default function Header() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "glass" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolledBg}`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="relative z-50">
               <Magnetic strength={0.2}>
@@ -56,10 +57,24 @@ export default function Header() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="w-9 h-9 rounded-xl bg-foreground flex items-center justify-center">
-                    <span className="text-background font-semibold text-base">K</span>
+                  <div
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center ${
+                      isHome ? "bg-white" : "bg-foreground"
+                    }`}
+                  >
+                    <span
+                      className={`font-semibold text-base ${
+                        isHome ? "text-black" : "text-background"
+                      }`}
+                    >
+                      K
+                    </span>
                   </div>
-                  <span className="text-lg font-semibold tracking-tight hidden sm:block">
+                  <span
+                    className={`text-lg font-semibold tracking-tight hidden sm:block ${
+                      isHome ? "text-white" : "text-foreground"
+                    }`}
+                  >
                     kavi
                   </span>
                 </motion.div>
@@ -74,19 +89,33 @@ export default function Header() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="relative px-4 py-2 text-sm font-medium transition-colors"
+                    className="group relative px-4 py-2 text-sm font-medium"
                   >
                     <span
-                      className={`relative z-10 ${
-                        isActive ? "text-foreground" : "text-muted hover:text-foreground"
+                      className={`relative z-10 transition-colors ${
+                        isHome
+                          ? isActive
+                            ? "text-white"
+                            : "text-white/55 group-hover:text-white"
+                          : isActive
+                          ? "text-foreground"
+                          : "text-muted group-hover:text-foreground"
                       }`}
                     >
                       {link.name}
                     </span>
+                    {/* animated underline */}
+                    <span
+                      className={`absolute bottom-1 left-4 right-4 h-px origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${
+                        isHome ? "bg-white/60" : "bg-foreground"
+                      }`}
+                    />
                     {isActive && (
                       <motion.div
                         layoutId="activeNav"
-                        className="absolute inset-0 bg-subtle rounded-full"
+                        className={`absolute inset-0 rounded-full ${
+                          isHome ? "bg-white/10" : "bg-subtle"
+                        }`}
                         transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                       />
                     )}
@@ -100,21 +129,19 @@ export default function Header() {
               <Magnetic strength={0.15}>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background rounded-full text-sm font-medium hover:scale-105 active:scale-95 transition-transform"
+                  className={`group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-transform hover:scale-105 active:scale-95 ${
+                    isHome ? "bg-white text-black" : "bg-foreground text-background"
+                  }`}
                 >
                   <span>Let&apos;s Talk</span>
                   <svg
-                    className="w-3.5 h-3.5"
+                    className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     strokeWidth={2}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
               </Magnetic>
@@ -128,20 +155,14 @@ export default function Header() {
             >
               <div className="w-6 h-5 relative flex flex-col justify-between">
                 <motion.span
-                  animate={{
-                    rotate: isMobileMenuOpen ? 45 : 0,
-                    y: isMobileMenuOpen ? 8 : 0,
-                  }}
+                  animate={{ rotate: isMobileMenuOpen ? 45 : 0, y: isMobileMenuOpen ? 8 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full h-0.5 bg-foreground origin-left"
+                  className={`w-full h-0.5 origin-left ${isHome ? "bg-white" : "bg-foreground"}`}
                 />
                 <motion.span
-                  animate={{
-                    opacity: isMobileMenuOpen ? 0 : 1,
-                    x: isMobileMenuOpen ? 20 : 0,
-                  }}
+                  animate={{ opacity: isMobileMenuOpen ? 0 : 1, x: isMobileMenuOpen ? 20 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className="w-3/4 h-0.5 bg-foreground"
+                  className={`w-3/4 h-0.5 ${isHome ? "bg-white" : "bg-foreground"}`}
                 />
                 <motion.span
                   animate={{
@@ -150,7 +171,7 @@ export default function Header() {
                     width: isMobileMenuOpen ? "100%" : "50%",
                   }}
                   transition={{ duration: 0.3 }}
-                  className="h-0.5 bg-foreground origin-left"
+                  className={`h-0.5 origin-left ${isHome ? "bg-white" : "bg-foreground"}`}
                 />
               </div>
             </button>
@@ -168,72 +189,56 @@ export default function Header() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 md:hidden"
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-background"
-            />
-
-            <div className="relative h-full flex flex-col items-center justify-center">
-              <div className="absolute top-1/4 -left-32 w-64 h-64 bg-violet-500/10 rounded-full blur-[100px]" />
-              <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px]" />
-
-              <nav className="relative z-10 flex flex-col items-center gap-2">
-                {navLinks.map((link, index) => {
-                  const isActive = pathname === link.href;
-                  return (
-                    <motion.div
-                      key={link.name}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 30 }}
-                      transition={{ delay: index * 0.1, duration: 0.4 }}
-                    >
-                      <Link
-                        href={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={`text-4xl font-semibold transition-colors ${
-                          isActive
-                            ? "text-gradient"
-                            : "text-muted hover:text-foreground"
-                        }`}
-                      >
-                        {link.name}
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 30 }}
-                  transition={{ delay: 0.3, duration: 0.4 }}
-                  className="mt-8"
-                >
-                  <Link
-                    href="/contact"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="btn-primary"
+            <div className={`absolute inset-0 ${isHome ? "bg-neutral-950" : "bg-background"}`} />
+            <div className="relative h-full flex flex-col items-center justify-center gap-2">
+              {navLinks.map((link, index) => {
+                const isActive = pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 30 }}
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
                   >
-                    Let&apos;s Talk
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`text-4xl font-semibold transition-colors ${
+                        isHome
+                          ? isActive
+                            ? "text-white"
+                            : "text-white/50 hover:text-white"
+                          : isActive
+                          ? "text-foreground"
+                          : "text-muted hover:text-foreground"
+                      }`}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </Link>
-                </motion.div>
-              </nav>
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 30 }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+                className="mt-8"
+              >
+                <Link
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium ${
+                    isHome ? "bg-white text-black" : "bg-foreground text-background"
+                  }`}
+                >
+                  Let&apos;s Talk
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

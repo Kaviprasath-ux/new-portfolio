@@ -2,27 +2,30 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SectionLabel from "@/components/SectionLabel";
-import Button from "@/components/Button";
-import { socialLinks } from "@/lib/data";
+import { ArrowRight, ArrowUpRight, Check, Loader2, ChevronDown } from "lucide-react";
+import { Silver } from "@/components/ui/silver";
+import { Magnetic } from "@/components/animations";
 
-// Get your free access key from https://web3forms.com
 const WEB3FORMS_ACCESS_KEY = "208ca774-b486-4459-869e-ea95422bb0a1";
 
-const projectTypes = [
-  "UI/UX Design",
-  "Mobile App Design",
-  "Web Design",
-  "Branding",
-  "Design System",
-  "Other",
+const inquiryTypes = [
+  "Full-time role",
+  "Freelance / contract",
+  "Collaboration",
+  "Something else",
+];
+
+const socials = [
+  { name: "Behance", url: "https://www.behance.net/kaviprasath" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/kaviprasath07/" },
+  { name: "Medium", url: "https://medium.com/@kaviprasanth666" },
 ];
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    projectType: "",
+    inquiry: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,24 +49,20 @@ export default function ContactPage() {
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           name: formData.name,
           email: formData.email,
-          subject: `New Portfolio Inquiry: ${formData.projectType}`,
+          subject: `New Portfolio Inquiry: ${formData.inquiry || "General"}`,
           message: formData.message,
-          project_type: formData.projectType,
+          inquiry_type: formData.inquiry,
         }),
       });
-
       const result = await response.json();
-
       if (result.success) {
         setIsSubmitted(true);
-        setFormData({ name: "", email: "", projectType: "", message: "" });
+        setFormData({ name: "", email: "", inquiry: "", message: "" });
       } else {
         setError("Something went wrong. Please try again.");
       }
@@ -74,131 +73,124 @@ export default function ContactPage() {
     }
   };
 
+  const labelCls =
+    "mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500";
+  const fieldCls =
+    "w-full border-b border-white/15 bg-transparent py-3 text-white placeholder:text-neutral-600 transition-colors focus:border-white focus:outline-none";
+
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-32 px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left Side - Info */}
+    <div className="bg-neutral-950 pt-px text-white">
+      <div className="grain" />
+
+      <section className="relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32">
+        <div className="pointer-events-none absolute -top-24 left-1/4 h-80 w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(190,198,220,0.1),transparent_65%)] blur-3xl" />
+
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:px-8">
+          {/* ---------- left: intro ---------- */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <SectionLabel className="mb-4">Get in Touch</SectionLabel>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Let&apos;s work together
+            <p className="mb-5 font-mono text-xs uppercase tracking-[0.25em] text-neutral-500">
+              ( Contact )
+            </p>
+            <h1 className="text-[clamp(2.6rem,6.5vw,5rem)] font-semibold leading-[0.98] tracking-[-0.03em]">
+              <Silver>Let&apos;s work</Silver>
+              <br />
+              <span className="text-shine">together.</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted leading-relaxed mb-12">
-              Have a project in mind? I&apos;d love to hear about it. Fill out the
-              form and I&apos;ll get back to you as soon as possible.
+
+            <p className="mt-8 max-w-md text-lg leading-relaxed text-neutral-400">
+              Open to product design roles and select freelance — especially
+              regulated, high-stakes enterprise work. Tell me what you&apos;re
+              building.
             </p>
 
-            {/* Email */}
-            <div className="mb-8">
-              <h3 className="text-sm font-medium text-muted mb-2 uppercase tracking-wider">
-                Email
-              </h3>
+            {/* availability */}
+            <div className="mt-8 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-300 backdrop-blur-sm">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              </span>
+              Available 2026 · India · Remote-first
+            </div>
+
+            {/* direct email */}
+            <div className="mt-12">
+              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500">
+                Direct
+              </p>
               <a
                 href="mailto:kaviprasanth666@gmail.com"
-                className="text-xl hover:text-muted transition-colors"
+                className="group inline-flex items-center gap-3 text-xl font-medium tracking-tight text-white md:text-2xl"
               >
-                kaviprasanth666@gmail.com
+                <span className="link-hover">kaviprasanth666@gmail.com</span>
+                <ArrowUpRight className="h-5 w-5 text-neutral-500 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
               </a>
             </div>
 
-            {/* Social Links */}
-            <div>
-              <h3 className="text-sm font-medium text-muted mb-4 uppercase tracking-wider">
-                Follow Me
-              </h3>
-              <div className="flex flex-wrap gap-4">
-                {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.name}
-                    href={social.url}
+            {/* socials */}
+            <div className="mt-10">
+              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500">
+                Elsewhere
+              </p>
+              <div className="flex flex-wrap gap-x-8 gap-y-3">
+                {socials.map((s) => (
+                  <a
+                    key={s.name}
+                    href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-card dark:bg-card-dark rounded-full text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors group"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="group inline-flex items-center gap-1.5 text-sm text-neutral-300 transition-colors hover:text-white"
                   >
-                    {social.name}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                    >
-                      <path d="M7 7h10v10" />
-                      <path d="M7 17 17 7" />
-                    </svg>
-                  </motion.a>
+                    {s.name}
+                    <ArrowUpRight className="h-3.5 w-3.5 text-neutral-600 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
+                  </a>
                 ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Right Side - Form */}
+          {/* ---------- right: form ---------- */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:pt-2"
           >
             {isSubmitted ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="h-full flex items-center justify-center bg-card dark:bg-card-dark rounded-3xl p-12"
+                className="flex min-h-[420px] flex-col items-center justify-center text-center"
               >
-                <div className="text-center">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.2, type: "spring" }}
-                    className="w-20 h-20 mx-auto mb-6 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="40"
-                      height="40"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-green-600 dark:text-green-400"
-                    >
-                      <path d="M20 6 9 17l-5-5" />
-                    </svg>
-                  </motion.div>
-                  <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                  <p className="text-muted mb-6">
-                    Thank you for reaching out. I&apos;ll get back to you soon.
-                  </p>
-                  <Button onClick={() => setIsSubmitted(false)} variant="outline">
-                    Send Another Message
-                  </Button>
-                </div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.15, type: "spring", bounce: 0.4 }}
+                  className="mb-7 flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-white/5"
+                >
+                  <Check className="h-7 w-7 text-white" />
+                </motion.div>
+                <h3 className="text-2xl font-semibold tracking-tight">
+                  <Silver>Message sent.</Silver>
+                </h3>
+                <p className="mt-3 max-w-sm text-neutral-400">
+                  Thanks for reaching out — I&apos;ll get back to you shortly.
+                </p>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5"
+                >
+                  Send another
+                </button>
               </motion.div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="bg-card dark:bg-card-dark rounded-3xl p-8 md:p-12 space-y-6"
-              >
-                {/* Name */}
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Name
+                  <label htmlFor="name" className={labelCls}>
+                    Your name
                   </label>
                   <input
                     type="text"
@@ -207,17 +199,13 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all"
-                    placeholder="John Doe"
+                    className={fieldCls}
+                    placeholder="Jane Doe"
                   />
                 </div>
 
-                {/* Email */}
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                  >
+                  <label htmlFor="email" className={labelCls}>
                     Email
                   </label>
                   <input
@@ -227,42 +215,39 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all"
-                    placeholder="john@example.com"
+                    className={fieldCls}
+                    placeholder="jane@company.com"
                   />
                 </div>
 
-                {/* Project Type */}
-                <div>
-                  <label
-                    htmlFor="projectType"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Project Type
+                <div className="relative">
+                  <label htmlFor="inquiry" className={labelCls}>
+                    Inquiry
                   </label>
                   <select
-                    id="projectType"
-                    name="projectType"
-                    value={formData.projectType}
+                    id="inquiry"
+                    name="inquiry"
+                    value={formData.inquiry}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all appearance-none cursor-pointer"
+                    className={`${fieldCls} cursor-pointer appearance-none pr-8 [&>option]:bg-neutral-900 ${
+                      formData.inquiry ? "text-white" : "text-neutral-600"
+                    }`}
                   >
-                    <option value="">Select a project type</option>
-                    {projectTypes.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
+                    <option value="" disabled>
+                      Select one
+                    </option>
+                    {inquiryTypes.map((t) => (
+                      <option key={t} value={t}>
+                        {t}
                       </option>
                     ))}
                   </select>
+                  <ChevronDown className="pointer-events-none absolute bottom-3.5 right-0 h-4 w-4 text-neutral-500" />
                 </div>
 
-                {/* Message */}
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2"
-                  >
+                  <label htmlFor="message" className={labelCls}>
                     Message
                   </label>
                   <textarea
@@ -271,70 +256,38 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all resize-none"
-                    placeholder="Tell me about your project..."
+                    rows={4}
+                    className={`${fieldCls} resize-none`}
+                    placeholder="Tell me about the role or project…"
                   />
                 </div>
 
-                {/* Error Message */}
-                {error && (
-                  <p className="text-red-500 text-sm">{error}</p>
-                )}
+                {error && <p className="text-sm text-red-400">{error}</p>}
 
-                {/* Submit Button */}
-                <Button
-                  type="submit"
-                  className="w-full"
-                  icon={
-                    isSubmitting ? (
-                      <motion.span
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          repeat: Infinity,
-                          duration: 1,
-                          ease: "linear",
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-                        </svg>
-                      </motion.span>
+                <Magnetic strength={0.2}>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group inline-flex items-center gap-2.5 rounded-full bg-white px-8 py-4 text-sm font-semibold text-black transition-transform hover:scale-105 active:scale-95 disabled:opacity-70"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        Sending
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      </>
                     ) : (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    )
-                  }
-                >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </Button>
+                      <>
+                        Send message
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                      </>
+                    )}
+                  </button>
+                </Magnetic>
               </form>
             )}
           </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

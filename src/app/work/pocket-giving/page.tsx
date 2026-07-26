@@ -105,7 +105,7 @@ function ReadingProgress() {
 
   return (
     <motion.div
-      className="fixed top-16 left-0 right-0 h-0.5 bg-[#252947] origin-left z-50"
+      className="fixed top-16 left-0 right-0 h-0.5 bg-white origin-left z-50"
       style={{ scaleX, opacity }}
     />
   );
@@ -122,7 +122,7 @@ export default function PocketGivingCaseStudyV2() {
   const heroY = useTransform(heroScrollProgress, [0, 0.5], [0, 100]);
 
   return (
-    <article className="min-h-screen bg-white text-[#242424] overflow-x-hidden">
+    <article className="min-h-screen bg-neutral-950 text-neutral-100 overflow-x-hidden">
       <ReadingProgress />
 
 
@@ -130,7 +130,7 @@ export default function PocketGivingCaseStudyV2() {
       <div ref={heroRef} className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
         {/* Background gradient */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-[#252947]/5 via-white to-white"
+          className="absolute inset-0 bg-gradient-to-b from-white/5 via-neutral-950 to-transparent"
           style={{ opacity: heroOpacity }}
         />
 
@@ -147,7 +147,7 @@ export default function PocketGivingCaseStudyV2() {
           >
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 text-sm text-[#6b6b6b] hover:text-[#242424] transition-colors group"
+              className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-neutral-100 transition-colors group"
             >
               <svg
                 className="w-4 h-4 group-hover:-translate-x-1 transition-transform"
@@ -163,7 +163,7 @@ export default function PocketGivingCaseStudyV2() {
 
           {/* Overline */}
           <motion.p
-            className="text-[#252947]/70 font-medium tracking-[0.2em] uppercase text-[11px] md:text-xs mb-4"
+            className="text-white/70 font-medium tracking-[0.2em] uppercase text-[11px] md:text-xs mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -172,16 +172,16 @@ export default function PocketGivingCaseStudyV2() {
           </motion.p>
 
           <motion.h1
-            className="text-[32px] md:text-[42px] lg:text-[52px] font-bold leading-[1.15] tracking-[-0.02em] text-[#242424] mb-6"
+            className="text-[32px] md:text-[42px] lg:text-[52px] font-bold leading-[1.15] tracking-[-0.02em] text-neutral-100 mb-6"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            Reducing Donation Friction by <span className="text-[#252947]">40%</span>: A Systems Approach to Charitable UX
+            Reducing Donation Friction by <span className="text-white">40%</span>: A Systems Approach to Charitable UX
           </motion.h1>
 
           <motion.p
-            className="text-[17px] md:text-[19px] text-[#6b6b6b] leading-[1.7] max-w-[640px] mx-auto"
+            className="text-[17px] md:text-[19px] text-neutral-400 leading-[1.7] max-w-[640px] mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -196,12 +196,12 @@ export default function PocketGivingCaseStudyV2() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="w-12 h-12 rounded-full bg-[#252947] flex items-center justify-center text-white font-semibold text-lg shadow-lg shadow-[#252947]/30">
+            <div className="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center text-black font-semibold text-lg shadow-lg shadow-white/20">
               K
             </div>
             <div className="text-left">
-              <p className="font-medium text-[#242424]">Kavi Prasath</p>
-              <p className="text-sm text-[#6b6b6b]">Product Designer · 4 months</p>
+              <p className="font-medium text-neutral-100">Kavi Prasath</p>
+              <p className="text-sm text-neutral-400">Product Designer · 4 months</p>
             </div>
           </motion.div>
 
@@ -234,17 +234,17 @@ export default function PocketGivingCaseStudyV2() {
         {/* Executive Summary - Large Opening */}
         <AnimatedSection className="mb-24">
           <motion.p
-            className="text-[24px] md:text-[28px] leading-[1.6] text-[#242424] font-light"
+            className="text-[24px] md:text-[28px] leading-[1.6] text-neutral-100 font-light"
             variants={fadeInUp}
           >
-            <span className="text-[64px] md:text-[80px] font-bold float-left mr-4 mt-2 leading-none text-[#252947]">P</span>
+            <span className="text-[64px] md:text-[80px] font-bold float-left mr-4 mt-2 leading-none text-white">P</span>
             ocket Giving approached me with a critical business problem: 73% of donors abandoned their donations mid-flow, and Gift Aid activation—worth £480M annually to UK charities—sat at just 34%.
           </motion.p>
         </AnimatedSection>
 
         <AnimatedSection className="mb-24">
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
-            I led the end-to-end design strategy, establishing a component-first design system, conducting structured usability testing with 20+ participants, and shipping 220+ screens across three platforms in four months. The result: <strong className="text-[#252947]">40% reduction in completion time</strong>, <strong className="text-[#252947]">2× Gift Aid activation</strong>, and a scalable system now live on iOS and Android.
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
+            I led the end-to-end design strategy, establishing a component-first design system, conducting structured usability testing with 20+ participants, and shipping 220+ screens across three platforms in four months. The result: <strong className="text-white">40% reduction in completion time</strong>, <strong className="text-white">2× Gift Aid activation</strong>, and a scalable system now live on iOS and Android.
           </p>
         </AnimatedSection>
 
@@ -256,25 +256,25 @@ export default function PocketGivingCaseStudyV2() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#242424]/20 to-[#242424]/20" />
-          <span className="text-[#6b6b6b] text-sm font-medium tracking-wider uppercase">Chapter 01</span>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-[#242424]/20 to-[#242424]/20" />
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/15 to-white/15" />
+          <span className="text-neutral-400 text-sm font-medium tracking-wider uppercase">Chapter 01</span>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-white/15 to-white/15" />
         </motion.div>
 
         {/* Strategic Context */}
         <AnimatedSection className="mb-16">
           <motion.h2
-            className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-[#242424] mb-8"
+            className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-neutral-100 mb-8"
             variants={fadeInUp}
           >
             The £480 Million Problem
           </motion.h2>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424] mb-8">
+          <p className="text-[21px] leading-[1.8] text-neutral-100 mb-8">
             The UK charitable giving sector faces a paradox: donor intent is high, but conversion is catastrophically low. This isn&apos;t a marketing problem—it&apos;s a systems design failure.
           </p>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             When Pocket Giving&apos;s leadership approached me, they presented a clear business case. Their client charities were hemorrhaging potential donations at every step of the funnel. The numbers were stark:
           </p>
         </AnimatedSection>
@@ -290,29 +290,29 @@ export default function PocketGivingCaseStudyV2() {
           {[
             { value: "73%", label: "Abandonment rate", color: "from-red-500 to-orange-500" },
             { value: "34%", label: "Gift Aid activation", color: "from-amber-500 to-yellow-500" },
-            { value: "£480M", label: "Lost to friction", color: "from-[#252947] to-[#3d4a6b]" }
+            { value: "£480M", label: "Lost to friction", color: "from-white to-neutral-500" }
           ].map((stat, i) => (
             <motion.div
               key={i}
-              className="relative bg-white rounded-2xl p-6 text-center border border-black/5 overflow-hidden group hover:shadow-xl transition-shadow duration-500"
+              className="relative bg-white/5 rounded-2xl p-6 text-center border border-white/10 overflow-hidden group hover:shadow-xl transition-shadow duration-500"
               variants={staggerItem}
               whileHover={{ y: -5 }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-              <p className="text-[36px] md:text-[48px] font-bold text-[#242424] tracking-tight">
+              <p className="text-[36px] md:text-[48px] font-bold text-neutral-100 tracking-tight">
                 <AnimatedCounter value={stat.value} />
               </p>
-              <p className="text-[14px] text-[#6b6b6b] mt-2">{stat.label}</p>
+              <p className="text-[14px] text-neutral-400 mt-2">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
 
         <AnimatedSection className="mb-12">
-          <p className="text-[21px] leading-[1.8] text-[#242424] mb-8">
+          <p className="text-[21px] leading-[1.8] text-neutral-100 mb-8">
             The root cause wasn&apos;t motivation—donors wanted to give. It was friction relative to emotional window. Charitable giving is an emotionally-driven behavior with a narrow decision window. Every additional step in the flow allows that emotional momentum to dissipate.
           </p>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             I identified three structural problems in the existing market:
           </p>
         </AnimatedSection>
@@ -344,16 +344,16 @@ export default function PocketGivingCaseStudyV2() {
           ].map((problem, i) => (
             <motion.div
               key={i}
-              className="flex gap-6 p-6 rounded-xl bg-[#fafafa] hover:bg-[#f5f5f5] transition-colors group"
+              className="flex gap-6 p-6 rounded-xl bg-white/[0.04] hover:bg-[#f5f5f5] transition-colors group"
               variants={slideInLeft}
               whileHover={{ x: 10 }}
             >
-              <span className="text-[48px] font-bold text-[#e5e5e5] group-hover:text-[#252947]/20 transition-colors leading-none">
+              <span className="text-[48px] font-bold text-[#e5e5e5] group-hover:text-white/20 transition-colors leading-none">
                 {problem.num}
               </span>
               <div>
-                <p className="text-[18px] font-semibold text-[#242424] mb-2">{problem.title}</p>
-                <p className="text-[16px] text-[#6b6b6b] leading-[1.6]">{problem.desc}</p>
+                <p className="text-[18px] font-semibold text-neutral-100 mb-2">{problem.title}</p>
+                <p className="text-[16px] text-neutral-400 leading-[1.6]">{problem.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -367,9 +367,9 @@ export default function PocketGivingCaseStudyV2() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#252947] to-[#3d4a6b] rounded-full" />
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-white to-neutral-500 rounded-full" />
           <motion.p
-            className="text-[26px] md:text-[32px] leading-[1.4] text-[#242424] font-medium pl-8"
+            className="text-[26px] md:text-[32px] leading-[1.4] text-neutral-100 font-medium pl-8"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -380,7 +380,7 @@ export default function PocketGivingCaseStudyV2() {
         </motion.blockquote>
 
         <AnimatedSection>
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             This insight from stakeholder interviews became the strategic foundation for every design decision that followed.
           </p>
         </AnimatedSection>
@@ -393,29 +393,29 @@ export default function PocketGivingCaseStudyV2() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#242424]/20 to-[#242424]/20" />
-          <span className="text-[#6b6b6b] text-sm font-medium tracking-wider uppercase">Chapter 02</span>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-[#242424]/20 to-[#242424]/20" />
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/15 to-white/15" />
+          <span className="text-neutral-400 text-sm font-medium tracking-wider uppercase">Chapter 02</span>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-white/15 to-white/15" />
         </motion.div>
 
         {/* Research Strategy */}
         <AnimatedSection className="mb-16">
-          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-[#242424] mb-8">
+          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-neutral-100 mb-8">
             Validating Assumptions at Scale
           </h2>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             Given the aggressive four-month timeline, I structured research to maximize signal while maintaining velocity. The approach combined three complementary methods:
           </p>
         </AnimatedSection>
 
         {/* Research Methods - Tabs Style */}
         <AnimatedSection className="mb-16">
-          <h3 className="text-[24px] font-bold text-[#242424] mb-6 flex items-center gap-3">
-            <span className="w-8 h-8 rounded-full bg-[#252947]/10 text-[#252947] flex items-center justify-center text-sm font-bold">1</span>
+          <h3 className="text-[24px] font-bold text-neutral-100 mb-6 flex items-center gap-3">
+            <span className="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center text-sm font-bold">1</span>
             Domain Expert Synthesis
           </h3>
-          <p className="text-[21px] leading-[1.8] text-[#242424] mb-6">
+          <p className="text-[21px] leading-[1.8] text-neutral-100 mb-6">
             I conducted eight structured sessions with the client&apos;s leadership team, who brought five years of direct charity sector experience and relationships with 50+ UK organizations. These sessions weren&apos;t casual conversations—I used a systematic interview protocol to extract:
           </p>
           <motion.ul
@@ -433,10 +433,10 @@ export default function PocketGivingCaseStudyV2() {
             ].map((item, i) => (
               <motion.li
                 key={i}
-                className="flex items-start gap-3 text-[18px] text-[#242424]"
+                className="flex items-start gap-3 text-[18px] text-neutral-100"
                 variants={staggerItem}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#252947] mt-3 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white mt-3 flex-shrink-0" />
                 {item}
               </motion.li>
             ))}
@@ -444,17 +444,17 @@ export default function PocketGivingCaseStudyV2() {
         </AnimatedSection>
 
         <AnimatedSection className="mb-16">
-          <h3 className="text-[24px] font-bold text-[#242424] mb-6 flex items-center gap-3">
-            <span className="w-8 h-8 rounded-full bg-[#252947]/10 text-[#252947] flex items-center justify-center text-sm font-bold">2</span>
+          <h3 className="text-[24px] font-bold text-neutral-100 mb-6 flex items-center gap-3">
+            <span className="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center text-sm font-bold">2</span>
             Competitive Analysis
           </h3>
-          <p className="text-[21px] leading-[1.8] text-[#242424] mb-8">
+          <p className="text-[21px] leading-[1.8] text-neutral-100 mb-8">
             I personally audited the complete donation flows of JustGiving, GoFundMe, Givelify, and Givebutter—documenting step counts, friction points, and interaction patterns. This wasn&apos;t surface-level review; I completed actual donations, timed each flow, and mapped decision points.
           </p>
 
           {/* Competitor Table - Enhanced */}
           <motion.div
-            className="rounded-2xl border border-black/10 overflow-hidden"
+            className="rounded-2xl border border-white/15 overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -462,14 +462,14 @@ export default function PocketGivingCaseStudyV2() {
           >
             <table className="w-full text-[15px]">
               <thead>
-                <tr className="bg-[#fafafa]">
-                  <th className="text-left py-4 px-5 font-semibold text-[#242424]">Platform</th>
-                  <th className="text-left py-4 px-5 font-semibold text-[#242424]">Steps</th>
-                  <th className="text-left py-4 px-5 font-semibold text-[#242424]">Gift Aid</th>
-                  <th className="text-left py-4 px-5 font-semibold text-[#242424]">Key Friction</th>
+                <tr className="bg-white/[0.04]">
+                  <th className="text-left py-4 px-5 font-semibold text-neutral-100">Platform</th>
+                  <th className="text-left py-4 px-5 font-semibold text-neutral-100">Steps</th>
+                  <th className="text-left py-4 px-5 font-semibold text-neutral-100">Gift Aid</th>
+                  <th className="text-left py-4 px-5 font-semibold text-neutral-100">Key Friction</th>
                 </tr>
               </thead>
-              <tbody className="text-[#242424]">
+              <tbody className="text-neutral-100">
                 {[
                   { name: "JustGiving", steps: "10 steps", giftAid: "Separate page", friction: "Account required" },
                   { name: "GoFundMe", steps: "8 steps", giftAid: "N/A", friction: "Tip confusion" },
@@ -478,7 +478,7 @@ export default function PocketGivingCaseStudyV2() {
                 ].map((row, i) => (
                   <motion.tr
                     key={i}
-                    className="border-t border-black/5 hover:bg-[#fafafa] transition-colors"
+                    className="border-t border-white/10 hover:bg-white/[0.04] transition-colors"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -487,7 +487,7 @@ export default function PocketGivingCaseStudyV2() {
                     <td className="py-4 px-5 font-medium">{row.name}</td>
                     <td className="py-4 px-5 font-mono text-red-500">{row.steps}</td>
                     <td className="py-4 px-5">{row.giftAid}</td>
-                    <td className="py-4 px-5 text-[#6b6b6b]">{row.friction}</td>
+                    <td className="py-4 px-5 text-neutral-400">{row.friction}</td>
                   </motion.tr>
                 ))}
               </tbody>
@@ -496,23 +496,23 @@ export default function PocketGivingCaseStudyV2() {
         </AnimatedSection>
 
         <AnimatedSection className="mb-16">
-          <h3 className="text-[24px] font-bold text-[#242424] mb-6 flex items-center gap-3">
-            <span className="w-8 h-8 rounded-full bg-[#252947]/10 text-[#252947] flex items-center justify-center text-sm font-bold">3</span>
+          <h3 className="text-[24px] font-bold text-neutral-100 mb-6 flex items-center gap-3">
+            <span className="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center text-sm font-bold">3</span>
             Structured Usability Testing
           </h3>
-          <p className="text-[21px] leading-[1.8] text-[#242424] mb-8">
+          <p className="text-[21px] leading-[1.8] text-neutral-100 mb-8">
             I designed and facilitated usability testing with 20+ participants across four core scenarios, using think-aloud protocol and task completion metrics. Testing was conducted in iterative rounds, allowing design refinements between sessions.
           </p>
 
           {/* Testing Box - Enhanced */}
           <motion.div
-            className="bg-gradient-to-br from-[#fafafa] to-white rounded-2xl p-8 border border-black/5"
+            className="bg-gradient-to-br from-white/[0.05] to-transparent rounded-2xl p-8 border border-white/10"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-[12px] font-bold tracking-[0.2em] text-[#252947] uppercase mb-6">Test Scenarios & Findings</p>
+            <p className="text-[12px] font-bold tracking-[0.2em] text-white uppercase mb-6">Test Scenarios & Findings</p>
             <div className="space-y-0">
               {[
                 { scenario: "First-time donation", target: "<90s completion", finding: "3 friction points in onboarding" },
@@ -522,17 +522,17 @@ export default function PocketGivingCaseStudyV2() {
               ].map((test, i) => (
                 <motion.div
                   key={i}
-                  className="flex justify-between items-center py-4 border-b border-black/5 last:border-0"
+                  className="flex justify-between items-center py-4 border-b border-white/10 last:border-0"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                 >
                   <div>
-                    <p className="font-semibold text-[#242424]">{test.scenario}</p>
-                    <p className="text-[14px] text-[#6b6b6b]">Target: {test.target}</p>
+                    <p className="font-semibold text-neutral-100">{test.scenario}</p>
+                    <p className="text-[14px] text-neutral-400">Target: {test.target}</p>
                   </div>
-                  <p className="text-[14px] text-[#6b6b6b] text-right">{test.finding}</p>
+                  <p className="text-[14px] text-neutral-400 text-right">{test.finding}</p>
                 </motion.div>
               ))}
             </div>
@@ -547,32 +547,32 @@ export default function PocketGivingCaseStudyV2() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#242424]/20 to-[#242424]/20" />
-          <span className="text-[#6b6b6b] text-sm font-medium tracking-wider uppercase">Chapter 03</span>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-[#242424]/20 to-[#242424]/20" />
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/15 to-white/15" />
+          <span className="text-neutral-400 text-sm font-medium tracking-wider uppercase">Chapter 03</span>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-white/15 to-white/15" />
         </motion.div>
 
         {/* Design Framework */}
         <AnimatedSection className="mb-16">
-          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-[#242424] mb-8">
+          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-neutral-100 mb-8">
             Speed as a Feature
           </h2>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             Research synthesis revealed a core insight that became the strategic framework for the entire project:
           </p>
         </AnimatedSection>
 
         {/* Core Insight - Big Quote */}
         <motion.div
-          className="relative my-16 py-16 px-8 bg-[#242424] rounded-3xl text-white overflow-hidden"
+          className="relative my-16 py-16 px-8 bg-neutral-900 rounded-3xl text-white overflow-hidden"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="absolute top-0 right-0 w-64 h-64 bg-[#252947]/10 rounded-full blur-3xl"
+            className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 4, repeat: Infinity }}
           />
@@ -582,7 +582,7 @@ export default function PocketGivingCaseStudyV2() {
         </motion.div>
 
         <AnimatedSection className="mb-12">
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             This led me to establish three design principles that guided every decision:
           </p>
         </AnimatedSection>
@@ -614,17 +614,17 @@ export default function PocketGivingCaseStudyV2() {
           ].map((principle, i) => (
             <motion.div
               key={i}
-              className="group relative p-8 rounded-2xl border border-black/5 hover:border-[#252947]/20 hover:shadow-lg hover:shadow-[#252947]/5 transition-all duration-500"
+              className="group relative p-8 rounded-2xl border border-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-[#252947]/5 transition-all duration-500"
               variants={staggerItem}
               whileHover={{ y: -5 }}
             >
               <div className="flex gap-6">
-                <span className="text-[64px] font-bold text-[#252947]/10 group-hover:text-[#252947]/30 transition-colors leading-none">
+                <span className="text-[64px] font-bold text-white/10 group-hover:text-white/30 transition-colors leading-none">
                   {principle.num}
                 </span>
                 <div>
-                  <h3 className="text-[20px] font-bold text-[#242424] mb-3">{principle.title}</h3>
-                  <p className="text-[17px] text-[#6b6b6b] leading-[1.7]">{principle.desc}</p>
+                  <h3 className="text-[20px] font-bold text-neutral-100 mb-3">{principle.title}</h3>
+                  <p className="text-[17px] text-neutral-400 leading-[1.7]">{principle.desc}</p>
                 </div>
               </div>
             </motion.div>
@@ -639,18 +639,18 @@ export default function PocketGivingCaseStudyV2() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#242424]/20 to-[#242424]/20" />
-          <span className="text-[#6b6b6b] text-sm font-medium tracking-wider uppercase">Chapter 04</span>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-[#242424]/20 to-[#242424]/20" />
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/15 to-white/15" />
+          <span className="text-neutral-400 text-sm font-medium tracking-wider uppercase">Chapter 04</span>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-white/15 to-white/15" />
         </motion.div>
 
         {/* Solution Architecture */}
         <AnimatedSection className="mb-16">
-          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-[#242424] mb-8">
+          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-neutral-100 mb-8">
             Three-Tier Donation System
           </h2>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             Based on the design framework, I architected a donation system with three distinct flows, each optimized for specific user intent and context:
           </p>
         </AnimatedSection>
@@ -658,11 +658,11 @@ export default function PocketGivingCaseStudyV2() {
         {/* Tier 1 */}
         <AnimatedSection className="mb-20">
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1.5 bg-[#252947]/10 text-[#252947] text-sm font-semibold rounded-full">Tier 1</span>
-            <h3 className="text-[28px] font-bold text-[#242424]">Quick Donate (3 Taps)</h3>
+            <span className="px-4 py-1.5 bg-white/10 text-white text-sm font-semibold rounded-full">Tier 1</span>
+            <h3 className="text-[28px] font-bold text-neutral-100">Quick Donate (3 Taps)</h3>
           </div>
-          <p className="text-[17px] text-[#6b6b6b] mb-8">
-            <strong className="text-[#242424]">Target:</strong> Repeat donors &nbsp;·&nbsp; <strong className="text-[#242424]">Goal:</strong> Capture donation within emotional window (&lt;10s)
+          <p className="text-[17px] text-neutral-400 mb-8">
+            <strong className="text-neutral-100">Target:</strong> Repeat donors &nbsp;·&nbsp; <strong className="text-neutral-100">Goal:</strong> Capture donation within emotional window (&lt;10s)
           </p>
 
           <motion.figure
@@ -682,7 +682,7 @@ export default function PocketGivingCaseStudyV2() {
             />
           </motion.figure>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424] font-semibold mb-4">
+          <p className="text-[21px] leading-[1.8] text-neutral-100 font-semibold mb-4">
             Key design decisions:
           </p>
           <motion.ul
@@ -700,10 +700,10 @@ export default function PocketGivingCaseStudyV2() {
             ].map((item, i) => (
               <motion.li
                 key={i}
-                className="flex items-start gap-3 text-[18px] text-[#242424] leading-[1.7]"
+                className="flex items-start gap-3 text-[18px] text-neutral-100 leading-[1.7]"
                 variants={staggerItem}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#252947] mt-3 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white mt-3 flex-shrink-0" />
                 <span><strong>{item.bold}</strong> {item.text}</span>
               </motion.li>
             ))}
@@ -711,38 +711,38 @@ export default function PocketGivingCaseStudyV2() {
 
           {/* Improvement Metric */}
           <motion.div
-            className="flex items-center justify-between bg-gradient-to-r from-[#fafafa] to-white rounded-2xl p-8 border border-black/5"
+            className="flex items-center justify-between bg-gradient-to-r from-white/[0.05] to-transparent rounded-2xl p-8 border border-white/10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <div className="text-center">
-              <p className="text-[14px] text-[#6b6b6b] mb-1">Industry</p>
-              <p className="text-[28px] font-bold text-[#242424]">7-10 steps</p>
+              <p className="text-[14px] text-neutral-400 mb-1">Industry</p>
+              <p className="text-[28px] font-bold text-neutral-100">7-10 steps</p>
             </div>
             <motion.div
               animate={{ x: [0, 10, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              <svg className="w-8 h-8 text-[#252947]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </motion.div>
             <div className="text-center">
-              <p className="text-[14px] text-[#6b6b6b] mb-1">Quick Donate</p>
-              <p className="text-[28px] font-bold text-[#252947]">3 taps</p>
+              <p className="text-[14px] text-neutral-400 mb-1">Quick Donate</p>
+              <p className="text-[28px] font-bold text-white">3 taps</p>
             </div>
             <motion.div
               animate={{ x: [0, 10, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
             >
-              <svg className="w-8 h-8 text-[#252947]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </motion.div>
             <div className="text-center">
-              <p className="text-[14px] text-[#6b6b6b] mb-1">Result</p>
-              <p className="text-[28px] font-bold text-[#252947]">70% faster</p>
+              <p className="text-[14px] text-neutral-400 mb-1">Result</p>
+              <p className="text-[28px] font-bold text-white">70% faster</p>
             </div>
           </motion.div>
         </AnimatedSection>
@@ -750,13 +750,13 @@ export default function PocketGivingCaseStudyV2() {
         {/* Tier 2 */}
         <AnimatedSection className="mb-20">
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1.5 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full">Tier 2</span>
-            <h3 className="text-[28px] font-bold text-[#242424]">Standard Donation (5–7 Steps)</h3>
+            <span className="px-4 py-1.5 bg-blue-500/15 text-blue-300 text-sm font-semibold rounded-full">Tier 2</span>
+            <h3 className="text-[28px] font-bold text-neutral-100">Standard Donation (5–7 Steps)</h3>
           </div>
-          <p className="text-[17px] text-[#6b6b6b] mb-6">
-            <strong className="text-[#242424]">Target:</strong> New donors &nbsp;·&nbsp; <strong className="text-[#242424]">Goal:</strong> Balance information with conversion momentum
+          <p className="text-[17px] text-neutral-400 mb-6">
+            <strong className="text-neutral-100">Target:</strong> New donors &nbsp;·&nbsp; <strong className="text-neutral-100">Goal:</strong> Balance information with conversion momentum
           </p>
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             This flow accommodates the discovery journey—charity browsing, cause evaluation, and informed decision-making—while maintaining forward momentum through clear visual hierarchy and progress indication.
           </p>
         </AnimatedSection>
@@ -764,21 +764,21 @@ export default function PocketGivingCaseStudyV2() {
         {/* Tier 3 */}
         <AnimatedSection className="mb-20">
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1.5 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full">Tier 3</span>
-            <h3 className="text-[28px] font-bold text-[#242424]">Recurring Donation (Progressive Flow)</h3>
+            <span className="px-4 py-1.5 bg-purple-500/15 text-purple-300 text-sm font-semibold rounded-full">Tier 3</span>
+            <h3 className="text-[28px] font-bold text-neutral-100">Recurring Donation (Progressive Flow)</h3>
           </div>
-          <p className="text-[17px] text-[#6b6b6b] mb-6">
-            <strong className="text-[#242424]">Target user:</strong> Committed supporters establishing ongoing giving<br />
-            <strong className="text-[#242424]">Design goal:</strong> Manage complexity without cognitive overload
+          <p className="text-[17px] text-neutral-400 mb-6">
+            <strong className="text-neutral-100">Target user:</strong> Committed supporters establishing ongoing giving<br />
+            <strong className="text-neutral-100">Design goal:</strong> Manage complexity without cognitive overload
           </p>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424] mb-8">
+          <p className="text-[21px] leading-[1.8] text-neutral-100 mb-8">
             Initial testing of a comprehensive single-screen approach yielded 100% user overwhelm. I restructured into a progressive five-step flow:
           </p>
 
           {/* 5 Steps - Visual Timeline */}
           <motion.div
-            className="relative pl-8 border-l-2 border-[#252947]/20 space-y-6 my-12"
+            className="relative pl-8 border-l-2 border-white/20 space-y-6 my-12"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -796,10 +796,10 @@ export default function PocketGivingCaseStudyV2() {
                 className="relative"
                 variants={staggerItem}
               >
-                <div className="absolute -left-[41px] w-5 h-5 rounded-full bg-[#252947] border-4 border-white shadow-sm" />
-                <div className="bg-white p-4 rounded-xl border border-black/5 hover:shadow-md transition-shadow">
-                  <p className="font-semibold text-[#242424]">{i + 1}. {step.title}</p>
-                  <p className="text-[15px] text-[#6b6b6b] mt-1">{step.desc}</p>
+                <div className="absolute -left-[41px] w-5 h-5 rounded-full bg-white border-4 border-white shadow-sm" />
+                <div className="bg-white/5 p-4 rounded-xl border border-white/10 hover:shadow-md transition-shadow">
+                  <p className="font-semibold text-neutral-100">{i + 1}. {step.title}</p>
+                  <p className="text-[15px] text-neutral-400 mt-1">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -823,7 +823,7 @@ export default function PocketGivingCaseStudyV2() {
             />
           </motion.figure>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             Post-iteration testing showed user overwhelm dropped to 0%, with completion rates increasing 27%.
           </p>
         </AnimatedSection>
@@ -836,30 +836,30 @@ export default function PocketGivingCaseStudyV2() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#242424]/20 to-[#242424]/20" />
-          <span className="text-[#6b6b6b] text-sm font-medium tracking-wider uppercase">Chapter 05</span>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-[#242424]/20 to-[#242424]/20" />
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/15 to-white/15" />
+          <span className="text-neutral-400 text-sm font-medium tracking-wider uppercase">Chapter 05</span>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-white/15 to-white/15" />
         </motion.div>
 
         {/* Gift Aid Redesign */}
         <AnimatedSection className="mb-16">
-          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-[#242424] mb-4">
+          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-neutral-100 mb-4">
             Gift Aid Redesign
           </h2>
-          <p className="text-[24px] text-[#252947] font-semibold mb-8">From 34% to 67% Activation</p>
+          <p className="text-[24px] text-white font-semibold mb-8">From 34% to 67% Activation</p>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424] mb-6">
+          <p className="text-[21px] leading-[1.8] text-neutral-100 mb-6">
             Gift Aid represented the highest-impact design opportunity in the project. The UK government&apos;s scheme adds 25% to charitable donations at no cost to donors—but industry activation rates sat at just 34% due to poor interface design.
           </p>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             I approached this as a systematic design problem, running four distinct iterations through usability testing:
           </p>
         </AnimatedSection>
 
         {/* Iteration Table - Enhanced */}
         <motion.div
-          className="rounded-2xl border border-black/10 overflow-hidden mb-12"
+          className="rounded-2xl border border-white/15 overflow-hidden mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -867,11 +867,11 @@ export default function PocketGivingCaseStudyV2() {
         >
           <table className="w-full text-[15px]">
             <thead>
-              <tr className="bg-[#fafafa]">
-                <th className="text-left py-4 px-5 font-semibold text-[#242424] w-16">V</th>
-                <th className="text-left py-4 px-5 font-semibold text-[#242424]">Approach</th>
-                <th className="text-left py-4 px-5 font-semibold text-[#242424]">Result</th>
-                <th className="text-left py-4 px-5 font-semibold text-[#242424]">Learning</th>
+              <tr className="bg-white/[0.04]">
+                <th className="text-left py-4 px-5 font-semibold text-neutral-100 w-16">V</th>
+                <th className="text-left py-4 px-5 font-semibold text-neutral-100">Approach</th>
+                <th className="text-left py-4 px-5 font-semibold text-neutral-100">Result</th>
+                <th className="text-left py-4 px-5 font-semibold text-neutral-100">Learning</th>
               </tr>
             </thead>
             <tbody>
@@ -879,11 +879,11 @@ export default function PocketGivingCaseStudyV2() {
                 { v: "1", approach: "Full legal explanation", result: "0% read it", resultColor: "text-red-500", learning: "Compliance ≠ comprehension" },
                 { v: "2", approach: "Simple toggle", result: "High confusion", resultColor: "text-orange-500", learning: "Brevity needs context" },
                 { v: "3", approach: "Numerical display", result: "Understood math", resultColor: "text-amber-500", learning: "Numbers need narrative" },
-                { v: "4", approach: "Visual calc + benefit", result: "90% comprehension", resultColor: "text-[#252947] font-semibold", learning: "Show benefit, hide complexity", highlight: true }
+                { v: "4", approach: "Visual calc + benefit", result: "90% comprehension", resultColor: "text-white font-semibold", learning: "Show benefit, hide complexity", highlight: true }
               ].map((row, i) => (
                 <motion.tr
                   key={i}
-                  className={`border-t border-black/5 ${row.highlight ? 'bg-[#252947]/5' : 'hover:bg-[#fafafa]'} transition-colors`}
+                  className={`border-t border-white/10 ${row.highlight ? 'bg-white/5' : 'hover:bg-white/[0.04]'} transition-colors`}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -892,7 +892,7 @@ export default function PocketGivingCaseStudyV2() {
                   <td className="py-4 px-5 font-bold">{row.v}</td>
                   <td className="py-4 px-5">{row.approach}</td>
                   <td className={`py-4 px-5 ${row.resultColor}`}>{row.result}</td>
-                  <td className="py-4 px-5 text-[#6b6b6b]">{row.learning}</td>
+                  <td className="py-4 px-5 text-neutral-400">{row.learning}</td>
                 </motion.tr>
               ))}
             </tbody>
@@ -916,12 +916,12 @@ export default function PocketGivingCaseStudyV2() {
         </motion.figure>
 
         <AnimatedSection>
-          <p className="text-[21px] leading-[1.8] text-[#242424] mb-6">
+          <p className="text-[21px] leading-[1.8] text-neutral-100 mb-6">
             The final design positions Gift Aid as an inline toggle within the donation flow (never a separate page), uses visual math (&ldquo;Your £100 = £125 to charity&rdquo;), leads with benefit (&ldquo;At no cost to you&rdquo;), and tucks legal requirements behind a &ldquo;Learn more&rdquo; expansion.
           </p>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
-            Projected activation rate: <strong className="text-[#252947] text-[24px]">67%</strong>—nearly double the industry average.
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
+            Projected activation rate: <strong className="text-white text-[24px]">67%</strong>—nearly double the industry average.
           </p>
         </AnimatedSection>
 
@@ -933,18 +933,18 @@ export default function PocketGivingCaseStudyV2() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#242424]/20 to-[#242424]/20" />
-          <span className="text-[#6b6b6b] text-sm font-medium tracking-wider uppercase">Results</span>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-[#242424]/20 to-[#242424]/20" />
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/15 to-white/15" />
+          <span className="text-neutral-400 text-sm font-medium tracking-wider uppercase">Results</span>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-white/15 to-white/15" />
         </motion.div>
 
         {/* Business Outcomes */}
         <AnimatedSection className="mb-16">
-          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-[#242424] mb-8">
+          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-neutral-100 mb-8">
             Business Outcomes
           </h2>
 
-          <p className="text-[21px] leading-[1.8] text-[#242424]">
+          <p className="text-[21px] leading-[1.8] text-neutral-100">
             The product shipped on schedule and is live today on iOS and Android.
           </p>
         </AnimatedSection>
@@ -964,13 +964,13 @@ export default function PocketGivingCaseStudyV2() {
           ].map((metric, i) => (
             <motion.div
               key={i}
-              className="text-center p-8 rounded-2xl bg-gradient-to-b from-[#252947]/5 to-white border border-[#252947]/10"
+              className="text-center p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10"
               variants={scaleIn}
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <motion.p
-                className="text-[40px] md:text-[52px] font-bold text-[#252947] tracking-tight"
+                className="text-[40px] md:text-[52px] font-bold text-white tracking-tight"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
@@ -978,14 +978,14 @@ export default function PocketGivingCaseStudyV2() {
               >
                 {metric.value}
               </motion.p>
-              <p className="text-[15px] text-[#242424] font-medium mt-2">{metric.label}</p>
-              <p className="text-[13px] text-[#6b6b6b] mt-1">{metric.sublabel}</p>
+              <p className="text-[15px] text-neutral-100 font-medium mt-2">{metric.label}</p>
+              <p className="text-[13px] text-neutral-400 mt-1">{metric.sublabel}</p>
             </motion.div>
           ))}
         </motion.div>
 
         <AnimatedSection className="mb-16">
-          <h3 className="text-[24px] font-bold text-[#242424] mb-6">Delivery Metrics</h3>
+          <h3 className="text-[24px] font-bold text-neutral-100 mb-6">Delivery Metrics</h3>
           <motion.div
             className="grid grid-cols-2 gap-4"
             variants={staggerContainer}
@@ -1001,11 +1001,11 @@ export default function PocketGivingCaseStudyV2() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                className="p-5 rounded-xl bg-[#fafafa] border border-black/5"
+                className="p-5 rounded-xl bg-white/[0.04] border border-white/10"
                 variants={staggerItem}
               >
-                <p className="text-[28px] font-bold text-[#242424]">{item.value}</p>
-                <p className="text-[14px] text-[#6b6b6b]">{item.label}</p>
+                <p className="text-[28px] font-bold text-neutral-100">{item.value}</p>
+                <p className="text-[14px] text-neutral-400">{item.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -1019,18 +1019,18 @@ export default function PocketGivingCaseStudyV2() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#242424]/20 to-[#242424]/20" />
-          <span className="text-[#6b6b6b] text-sm font-medium tracking-wider uppercase">Reflection</span>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-[#242424]/20 to-[#242424]/20" />
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/15 to-white/15" />
+          <span className="text-neutral-400 text-sm font-medium tracking-wider uppercase">Reflection</span>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-white/15 to-white/15" />
         </motion.div>
 
         {/* Strategic Reflection */}
         <AnimatedSection className="mb-16">
-          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-[#242424] mb-12">
+          <h2 className="text-[36px] md:text-[42px] font-bold tracking-[-0.02em] text-neutral-100 mb-12">
             Strategic Reflection
           </h2>
 
-          <h3 className="text-[24px] font-bold text-[#242424] mb-6">What Drove Success</h3>
+          <h3 className="text-[24px] font-bold text-neutral-100 mb-6">What Drove Success</h3>
 
           <motion.div
             className="space-y-6 mb-16"
@@ -1049,15 +1049,15 @@ export default function PocketGivingCaseStudyV2() {
                 className="flex gap-4"
                 variants={slideInRight}
               >
-                <div className="w-2 h-2 rounded-full bg-[#252947] mt-3 flex-shrink-0" />
-                <p className="text-[19px] leading-[1.8] text-[#242424]">
+                <div className="w-2 h-2 rounded-full bg-white mt-3 flex-shrink-0" />
+                <p className="text-[19px] leading-[1.8] text-neutral-100">
                   <strong>{item.title}:</strong> {item.desc}
                 </p>
               </motion.div>
             ))}
           </motion.div>
 
-          <h3 className="text-[24px] font-bold text-[#242424] mb-6">What I&apos;d Approach Differently</h3>
+          <h3 className="text-[24px] font-bold text-neutral-100 mb-6">What I&apos;d Approach Differently</h3>
 
           <motion.div
             className="space-y-6"
@@ -1076,8 +1076,8 @@ export default function PocketGivingCaseStudyV2() {
                 className="flex gap-4"
                 variants={slideInRight}
               >
-                <div className="w-2 h-2 rounded-full bg-[#6b6b6b] mt-3 flex-shrink-0" />
-                <p className="text-[19px] leading-[1.8] text-[#242424]">
+                <div className="w-2 h-2 rounded-full bg-neutral-500 mt-3 flex-shrink-0" />
+                <p className="text-[19px] leading-[1.8] text-neutral-100">
                   <strong>{item.title}:</strong> {item.desc}
                 </p>
               </motion.div>
@@ -1087,7 +1087,7 @@ export default function PocketGivingCaseStudyV2() {
 
         {/* Key Takeaway - Full Width */}
         <motion.div
-          className="relative my-24 -mx-6 md:-mx-12 lg:-mx-24 px-6 md:px-12 lg:px-24 py-20 bg-[#242424] text-white overflow-hidden"
+          className="relative my-24 -mx-6 md:-mx-12 lg:-mx-24 px-6 md:px-12 lg:px-24 py-20 bg-neutral-900 text-white overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -1095,12 +1095,12 @@ export default function PocketGivingCaseStudyV2() {
         >
           {/* Animated background shapes */}
           <motion.div
-            className="absolute top-10 left-10 w-64 h-64 bg-[#252947]/10 rounded-full blur-3xl"
+            className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"
             animate={{ scale: [1, 1.3, 1], x: [0, 50, 0] }}
             transition={{ duration: 8, repeat: Infinity }}
           />
           <motion.div
-            className="absolute bottom-10 right-10 w-48 h-48 bg-[#252947]/10 rounded-full blur-3xl"
+            className="absolute bottom-10 right-10 w-48 h-48 bg-white/10 rounded-full blur-3xl"
             animate={{ scale: [1.2, 1, 1.2], y: [0, -30, 0] }}
             transition={{ duration: 6, repeat: Infinity }}
           />
@@ -1135,27 +1135,27 @@ export default function PocketGivingCaseStudyV2() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <p className="text-[18px] text-[#6b6b6b]">
+          <p className="text-[18px] text-neutral-400">
             The product is live: {" "}
-            <a href="https://apps.apple.com/in/app/pocket-giving/id6456887391" target="_blank" rel="noopener noreferrer" className="text-[#252947] hover:underline underline-offset-4">iOS</a>
+            <a href="https://apps.apple.com/in/app/pocket-giving/id6456887391" target="_blank" rel="noopener noreferrer" className="text-white hover:underline underline-offset-4">iOS</a>
             {" · "}
-            <a href="https://play.google.com/store/apps/details?id=com.customers.pocketgiving&hl=en_IN" target="_blank" rel="noopener noreferrer" className="text-[#252947] hover:underline underline-offset-4">Android</a>
+            <a href="https://play.google.com/store/apps/details?id=com.customers.pocketgiving&hl=en_IN" target="_blank" rel="noopener noreferrer" className="text-white hover:underline underline-offset-4">Android</a>
             {" · "}
-            <a href="https://pocketgiving.co.uk" target="_blank" rel="noopener noreferrer" className="text-[#252947] hover:underline underline-offset-4">pocketgiving.co.uk</a>
+            <a href="https://pocketgiving.co.uk" target="_blank" rel="noopener noreferrer" className="text-white hover:underline underline-offset-4">pocketgiving.co.uk</a>
           </p>
         </motion.div>
 
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-black/5">
+      <footer className="border-t border-white/10">
         <div className="max-w-[800px] mx-auto px-6 py-12 flex justify-between items-center">
           <Link
             href="/work"
-            className="group flex items-center gap-3 text-[#6b6b6b] hover:text-[#242424] transition-colors"
+            className="group flex items-center gap-3 text-neutral-400 hover:text-neutral-100 transition-colors"
           >
             <motion.div
-              className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover:border-[#242424] transition-colors"
+              className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center group-hover:border-white transition-colors"
               whileHover={{ x: -5 }}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1165,14 +1165,14 @@ export default function PocketGivingCaseStudyV2() {
             <span className="font-medium">More Work</span>
           </Link>
           <a
-            href="https://linkedin.com/in/kaviprasath"
+            href="https://www.linkedin.com/in/kaviprasath07/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 text-[#6b6b6b] hover:text-[#242424] transition-colors"
+            className="group flex items-center gap-3 text-neutral-400 hover:text-neutral-100 transition-colors"
           >
             <span className="font-medium">LinkedIn</span>
             <motion.div
-              className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover:border-[#242424] transition-colors"
+              className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center group-hover:border-white transition-colors"
               whileHover={{ x: 5 }}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

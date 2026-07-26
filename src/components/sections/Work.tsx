@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/Badge";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
+import { GlimmoraProjectPreview } from "@/components/GlimmoraProjectPreview";
 import { projects, projectCategories } from "@/data/projects";
 
 export function Work() {
@@ -95,20 +96,26 @@ function ProjectCard({ project }: ProjectCardProps) {
       >
         {/* Image container */}
         <div className="relative aspect-[4/3] overflow-hidden bg-surface-secondary">
-          {/* Placeholder gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-surface to-surface-secondary" />
+          {project.id === "glimmora-relocate" ? (
+            <GlimmoraProjectPreview compact />
+          ) : (
+            <>
+              {/* Placeholder gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-surface to-surface-secondary" />
 
-          {/* Actual image would go here */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto rounded-xl bg-surface border border-border flex items-center justify-center mb-3">
-                <span className="text-xl font-medium text-accent">
-                  {project.title.charAt(0)}
-                </span>
+              {/* Actual image would go here */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto rounded-xl bg-surface border border-border flex items-center justify-center mb-3">
+                    <span className="text-xl font-medium text-accent">
+                      {project.title.charAt(0)}
+                    </span>
+                  </div>
+                  <p className="text-text-tertiary text-sm">Project Preview</p>
+                </div>
               </div>
-              <p className="text-text-tertiary text-sm">Project Preview</p>
-            </div>
-          </div>
+            </>
+          )}
 
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">

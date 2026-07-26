@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 import { inter } from "@/lib/fonts";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased bg-white dark:bg-black text-black dark:text-white`}>
+        <CustomCursor />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
