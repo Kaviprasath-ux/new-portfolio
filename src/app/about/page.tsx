@@ -149,50 +149,42 @@ export default function AboutPage() {
     <div className="bg-neutral-950 pt-px text-white">
       <div className="grain" />
 
-      {/* ===================== HERO ===================== */}
-      <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
-        <div className="pointer-events-none absolute -top-24 left-1/4 h-80 w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(190,198,220,0.1),transparent_65%)] blur-3xl" />
-        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:px-8">
-          {/* portrait */}
+      {/* ===================== HERO — cinematic ===================== */}
+      <section className="relative min-h-[92vh] w-full overflow-hidden">
+        <motion.img
+          src="/hero-portrait.png"
+          alt=""
+          initial={{ scale: 1.06, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0 h-full w-full object-cover object-[30%_center]"
+        />
+        {/* scrims for legibility */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-neutral-950/25 via-neutral-950/50 to-neutral-950" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/10 to-neutral-950/40" />
+
+        {/* availability */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="absolute left-6 top-28 z-10 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-black/30 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-200 backdrop-blur md:left-8 md:top-32"
+        >
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          </span>
+          Available 2026 · India
+        </motion.div>
+
+        {/* content */}
+        <div className="relative mx-auto flex min-h-[92vh] max-w-7xl items-end px-6 pb-20 md:items-center md:pb-0 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 22 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative mx-auto w-full max-w-[420px]"
+            variants={parent}
+            initial="hidden"
+            animate="show"
+            className="w-full max-w-xl md:ml-auto md:pl-8"
           >
-            <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-[radial-gradient(circle_at_50%_30%,rgba(200,205,220,0.18),transparent_66%)] blur-2xl" />
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-white/12 bg-neutral-900 shadow-[0_45px_100px_-30px_rgba(0,0,0,0.9)]">
-              <img
-                src="/kavi-portrait.jpg"
-                alt="Kavi Prasath"
-                className="aspect-[2/3] w-full object-cover object-center"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-transparent to-transparent" />
-
-              <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/80 backdrop-blur">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                </span>
-                Available 2026
-              </div>
-
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5">
-                <div>
-                  <p className="text-sm font-semibold text-white">Kavi Prasath</p>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/60">
-                    Coimbatore, India
-                  </p>
-                </div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/45">
-                  ’26
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* intro */}
-          <motion.div variants={parent} initial="hidden" animate="show">
             <motion.span
               variants={child}
               className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-300 backdrop-blur-sm"
@@ -202,36 +194,27 @@ export default function AboutPage() {
 
             <motion.h1
               variants={child}
-              className="mt-7 text-[clamp(2.3rem,5vw,4rem)] font-semibold leading-[1.02] tracking-[-0.03em]"
+              className="mt-6 text-[clamp(2.4rem,5.5vw,4.5rem)] font-semibold leading-[1.02] tracking-[-0.03em]"
             >
-              I design the{" "}
-              <span className="text-shine">regulated edge</span> of enterprise
-              software.
+              I design the <span className="text-shine">regulated edge</span> of
+              enterprise software.
             </motion.h1>
 
             <motion.p
               variants={child}
-              className="mt-4 font-mono text-sm uppercase tracking-[0.18em] text-neutral-500"
+              className="mt-5 font-mono text-sm uppercase tracking-[0.18em] text-neutral-400"
             >
               Product Designer · Enterprise SaaS, GRC & Regulated Workflows
             </motion.p>
 
-            <motion.div
+            <motion.p
               variants={child}
-              className="mt-8 max-w-xl space-y-4 text-lg leading-relaxed text-neutral-400"
+              className="mt-6 max-w-md text-lg leading-relaxed text-neutral-300"
             >
-              <p>
-                3+ years across governance &amp; compliance, government tax, SAP
-                lifecycle, ERP and relocation — the multi-role, high-stakes systems
-                where clarity usually breaks. That&apos;s{" "}
-                <span className="text-white">where I work.</span>
-              </p>
-              <p>
-                I also ship. Six products built as working Next.js front-ends with
-                Claude Code and MCP — so engineering gets{" "}
-                <span className="text-white">coded prototypes</span>, not static files.
-              </p>
-            </motion.div>
+              3+ years turning multi-role, high-stakes systems — governance, tax, SAP,
+              ERP — into software people can actually operate, and shipping them as
+              working <span className="text-white">Next.js front-ends</span>.
+            </motion.p>
 
             <motion.div variants={child} className="mt-9 flex flex-wrap gap-3">
               <Magnetic strength={0.2}>
@@ -253,26 +236,43 @@ export default function AboutPage() {
                 Résumé
               </a>
             </motion.div>
-
-            {/* stat strip */}
-            <motion.div
-              variants={child}
-              className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-8 sm:grid-cols-4"
-            >
-              {stats.map((s) => (
-                <div key={s.l}>
-                  <p className="text-[clamp(1.8rem,3vw,2.5rem)] font-semibold leading-none tracking-tight">
-                    <span className="text-shine">
-                      <AnimatedCounter value={s.v} suffix={s.s} />
-                    </span>
-                  </p>
-                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.15em] text-neutral-500">
-                    {s.l}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
           </motion.div>
+        </div>
+
+        {/* scroll cue */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1, duration: 0.8 }}
+          className="absolute bottom-7 left-1/2 z-10 -translate-x-1/2 font-mono text-[10px] uppercase tracking-[0.25em] text-neutral-500"
+        >
+          <motion.span
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            className="inline-block"
+          >
+            Scroll ↓
+          </motion.span>
+        </motion.div>
+      </section>
+
+      {/* ===================== STATS ===================== */}
+      <section className="border-t border-white/10 py-14 md:py-16">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 sm:grid-cols-4 lg:px-8">
+          {stats.map((s) => (
+            <ScrollReveal key={s.l}>
+              <div>
+                <p className="text-[clamp(2rem,4vw,3rem)] font-semibold leading-none tracking-tight">
+                  <span className="text-shine">
+                    <AnimatedCounter value={s.v} suffix={s.s} />
+                  </span>
+                </p>
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.15em] text-neutral-500">
+                  {s.l}
+                </p>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </section>
 

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/lib/data";
 import { Magnetic } from "./animations";
+import { Silver } from "@/components/ui/silver";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,7 +17,8 @@ export default function Header() {
     pathname === "/" ||
     pathname.startsWith("/work") ||
     pathname === "/about" ||
-    pathname === "/contact";
+    pathname === "/contact" ||
+    pathname === "/blogs";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -53,30 +55,12 @@ export default function Header() {
             <Link href="/" className="relative z-50">
               <Magnetic strength={0.2}>
                 <motion.div
-                  className="flex items-center gap-2.5"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div
-                    className={`w-9 h-9 rounded-xl flex items-center justify-center ${
-                      isHome ? "bg-white" : "bg-foreground"
-                    }`}
-                  >
-                    <span
-                      className={`font-semibold text-base ${
-                        isHome ? "text-black" : "text-background"
-                      }`}
-                    >
-                      K
-                    </span>
-                  </div>
-                  <span
-                    className={`text-lg font-semibold tracking-tight hidden sm:block ${
-                      isHome ? "text-white" : "text-foreground"
-                    }`}
-                  >
-                    kavi
-                  </span>
+                  <Silver className="text-lg font-semibold tracking-tight md:text-xl">
+                    Kavi Prasath
+                  </Silver>
                 </motion.div>
               </Magnetic>
             </Link>
@@ -85,10 +69,16 @@ export default function Header() {
             <nav className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
+                const isExternal = "external" in link && link.external;
+                const Tag: React.ElementType = isExternal ? "a" : Link;
+                const extra = isExternal
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {};
                 return (
-                  <Link
+                  <Tag
                     key={link.name}
                     href={link.href}
+                    {...extra}
                     className="group relative px-4 py-2 text-sm font-medium"
                   >
                     <span
@@ -119,7 +109,7 @@ export default function Header() {
                         transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                       />
                     )}
-                  </Link>
+                  </Tag>
                 );
               })}
             </nav>
@@ -193,6 +183,11 @@ export default function Header() {
             <div className="relative h-full flex flex-col items-center justify-center gap-2">
               {navLinks.map((link, index) => {
                 const isActive = pathname === link.href;
+                const isExternal = "external" in link && link.external;
+                const Tag: React.ElementType = isExternal ? "a" : Link;
+                const extra = isExternal
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {};
                 return (
                   <motion.div
                     key={link.name}
@@ -201,8 +196,9 @@ export default function Header() {
                     exit={{ opacity: 0, y: 30 }}
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                   >
-                    <Link
+                    <Tag
                       href={link.href}
+                      {...extra}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`text-4xl font-semibold transition-colors ${
                         isHome
@@ -215,7 +211,7 @@ export default function Header() {
                       }`}
                     >
                       {link.name}
-                    </Link>
+                    </Tag>
                   </motion.div>
                 );
               })}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ScrollReveal, Magnetic } from "./animations";
+import { ScrollReveal } from "./animations";
 import { Silver } from "./ui/silver";
 
 const nav = [
@@ -29,11 +29,10 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-12">
           {/* brand */}
           <ScrollReveal className="md:col-span-6">
-            <div className="mb-5 flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white">
-                <span className="text-base font-semibold text-black">K</span>
-              </div>
-              <span className="text-lg font-semibold tracking-tight">kavi</span>
+            <div className="mb-5">
+              <Silver className="text-xl font-semibold tracking-tight">
+                Kavi Prasath
+              </Silver>
             </div>
             <p className="max-w-sm leading-relaxed text-neutral-400">
               Product designer for enterprise SaaS — I design the regulated
@@ -44,7 +43,7 @@ export default function Footer() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
               </span>
-              Available for select work · Doha · Remote
+              Available for work
             </div>
           </ScrollReveal>
 
@@ -98,26 +97,6 @@ export default function Footer() {
             </ul>
           </ScrollReveal>
         </div>
-
-        {/* CTA line */}
-        <ScrollReveal>
-          <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-white/10 pt-12 md:flex-row md:items-center">
-            <p className="text-2xl font-semibold tracking-tight md:text-3xl">
-              <Silver>Let&apos;s build something worth shipping.</Silver>
-            </p>
-            <Magnetic strength={0.2}>
-              <a
-                href="mailto:kaviprasanth666@gmail.com"
-                className="inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-transform hover:scale-105 active:scale-95"
-              >
-                Get in touch
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </Magnetic>
-          </div>
-        </ScrollReveal>
       </div>
 
       {/* giant wordmark */}

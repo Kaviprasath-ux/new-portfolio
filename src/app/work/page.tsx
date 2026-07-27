@@ -9,6 +9,27 @@ import { Silver } from "@/components/ui/silver";
 import { ConfidentialCover } from "@/components/ui/confidential-cover";
 import { projects, type Project } from "@/data/projects";
 
+const confidential = [
+  {
+    title: "Enterprise GRC Platform Migration",
+    category: "Glimmora · GRC",
+    desc: "Restructured a live governance, risk & compliance platform around role-based tasks — auditor, risk officer, compliance, executive — sequenced so operations never broke during cutover.",
+    status: "Confidential",
+  },
+  {
+    title: "Glimmora Aether",
+    category: "SAP Lifecycle · RBAC",
+    desc: "A multi-role platform for requesting, approving, executing and governing SAP infrastructure operations — six roles, approval chains, evidence and audit trails.",
+    status: "Confidential",
+  },
+  {
+    title: "Hotel PMS & ERP",
+    category: "Hospitality Operations",
+    desc: "Researched hotel operational workflows and designed booking journeys, reservation dashboards and management screens — validated through coded prototypes before build.",
+    status: "Confidential",
+  },
+];
+
 /* eslint-disable @next/next/no-img-element */
 function WorkRow({
   project,
@@ -28,7 +49,12 @@ function WorkRow({
 
   const isExternal = !!project.externalUrl;
   const href = isExternal ? project.externalUrl! : `/work/${project.id}`;
-  const label = isExternal ? "View on Behance" : "View case study";
+  const isMedium = isExternal && project.externalUrl!.includes("medium.com");
+  const label = isExternal
+    ? isMedium
+      ? "Read on Medium"
+      : "View on Behance"
+    : "View case study";
   const linkProps = isExternal
     ? { href, target: "_blank" as const, rel: "noopener noreferrer" }
     : { href };
@@ -147,8 +173,54 @@ export default function WorkPage() {
         </div>
       </section>
 
+      {/* Confidential / NDA context */}
+      <section className="border-t border-white/10 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-12 max-w-2xl">
+              <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-neutral-500">
+                ( Under NDA )
+              </p>
+              <h2 className="text-[clamp(2rem,5vw,3.25rem)] font-semibold tracking-tight">
+                <Silver>Confidential &amp; ongoing work</Silver>
+              </h2>
+              <p className="mt-5 max-w-xl leading-relaxed text-neutral-400">
+                Enterprise engagements I can&apos;t show in full — governance, SAP and
+                hospitality operations. Here&apos;s the context; visuals available under
+                NDA, on request.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="border-t border-white/10">
+            {confidential.map((c, i) => (
+              <ScrollReveal key={c.title} delay={i * 0.06}>
+                <div className="grid grid-cols-1 gap-x-10 gap-y-4 border-b border-white/10 py-8 md:grid-cols-12 md:items-baseline md:py-9">
+                  <div className="md:col-span-4">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500">
+                      {c.category}
+                    </p>
+                    <h3 className="mt-2 text-xl font-semibold tracking-tight md:text-2xl">
+                      <Silver>{c.title}</Silver>
+                    </h3>
+                  </div>
+                  <p className="text-sm leading-relaxed text-neutral-400 md:col-span-6">
+                    {c.desc}
+                  </p>
+                  <div className="md:col-span-2 md:text-right">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/12 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-neutral-400">
+                      {c.status}
+                    </span>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="border-t border-white/10 px-6 pb-24 md:pb-32 lg:px-8">
+      <section className="px-6 pb-24 md:pb-32 lg:px-8">
         <ScrollReveal>
           <div className="relative mx-auto mt-20 max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-neutral-900/60 p-12 text-center md:p-20">
             <div className="pointer-events-none absolute left-1/2 top-0 h-56 w-[600px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(255,255,255,0.08),transparent_65%)] blur-3xl" />

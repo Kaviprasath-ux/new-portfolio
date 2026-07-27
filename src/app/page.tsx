@@ -18,6 +18,7 @@ import {
 import { ScrollReveal, Magnetic, AnimatedCounter } from "@/components/animations";
 import { Silver } from "@/components/ui/silver";
 import { ConfidentialCover } from "@/components/ui/confidential-cover";
+import { GlowingShadow } from "@/components/ui/glowing-shadow";
 
 /* ------------------------------------------------------------------ *
  *  data
@@ -38,41 +39,30 @@ type Work = {
 const work: Work[] = [
   {
     n: "01",
-    title: "Bahrain Tax Platform",
-    category: "GovTech · Corporate & WHT",
-    year: "2025",
-    image: "/projects/bahrain-tax-platform/portal-dashboard.png",
-    href: "/work/bahrain-tax-platform",
-    external: false,
+    title: "Enterprise Tax Platform",
+    category: "GovTech · Product Design",
+    year: "2026",
+    image: "/projects/enterprise-tax-platform/cover.png",
+    href: "https://www.behance.net/gallery/253319867/Enterprise-Tax-Administration-Platform-Product-Design",
+    external: true,
   },
   {
     n: "02",
-    title: "Enterprise GRC Migration",
-    category: "GRC · Mendix → Next.js",
-    year: "2025",
-    image: "",
-    href: "/work/enterprise-grc-migration",
-    external: false,
-    confidential: true,
+    title: "Glimmora Relocate",
+    category: "Product · AI-Guided",
+    year: "2026",
+    image: "/projects/glimmora-relocate/cover.png",
+    href: "https://www.behance.net/gallery/252614099/Glimmora-Relocate",
+    external: true,
   },
   {
     n: "03",
-    title: "Glimmora Aether",
-    category: "SAP Lifecycle · 6 roles",
-    year: "2025",
-    image: "",
-    href: "/work/glimmora-aether",
-    external: false,
-    confidential: true,
-  },
-  {
-    n: "04",
-    title: "Pocket — Charitable Giving",
-    category: "FinTech · 220+ screens",
-    year: "2023",
-    image: "/projects/pocket-giving/cover.png",
-    href: "/work/pocket-giving",
-    external: false,
+    title: "Flaimed — Dating",
+    category: "Mobile · Product Design",
+    year: "2024",
+    image: "/projects/flaimed/cover.png",
+    href: "https://www.behance.net/gallery/200926651/Flaimed-Dating-Mobile-App-Design",
+    external: true,
   },
 ];
 
@@ -126,64 +116,64 @@ function MaskLine({ children }: { children: React.ReactNode }) {
  *  Selected work — image-forward bento gallery
  * ------------------------------------------------------------------ */
 /* eslint-disable @next/next/no-img-element */
-function WorkCard({ w, big }: { w: Work; big?: boolean }) {
+function WorkCard({ w }: { w: Work }) {
   const Anchor: React.ElementType = w.external ? "a" : Link;
   const props = w.external
     ? { href: w.href, target: "_blank", rel: "noopener noreferrer" }
     : { href: w.href };
 
-  return (
-    <Anchor
-      {...props}
-      className="group relative block h-[360px] overflow-hidden rounded-[1.75rem] border border-white/10 bg-neutral-900 sm:h-[440px] lg:h-[540px]"
-    >
-      {/* cover */}
-      {w.confidential ? (
-        <ConfidentialCover className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]" />
-      ) : (
-        <img
-          src={w.image}
-          alt={w.title}
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]"
-        />
-      )}
-      {/* legibility gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/25 to-neutral-950/50 transition-opacity duration-500 group-hover:from-neutral-950 group-hover:via-neutral-950/10" />
+  const cta = w.confidential
+    ? "Confidential"
+    : w.external
+    ? w.href.includes("medium.com")
+      ? "Read on Medium"
+      : "View on Behance"
+    : "View case study";
 
-      {/* frame chrome — top */}
-      <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5 md:p-6">
-        <span className="rounded-full border border-white/15 bg-black/30 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm">
+  return (
+    <Anchor {...props} className="group block">
+      {/* cover */}
+      <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 bg-neutral-900">
+        {w.confidential ? (
+          <ConfidentialCover className="transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
+        ) : (
+          <img
+            src={w.image}
+            alt={w.title}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+          />
+        )}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-950/40 via-transparent to-transparent" />
+        <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/35 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm">
           {w.n}
         </span>
-        <span className="flex items-center gap-1.5 rounded-full border border-white/15 bg-black/30 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm">
-          {w.confidential ? "Confidential" : w.external ? "Behance ↗" : "Case study"}
+        {/* corner arrow reveal */}
+        <span className="absolute right-4 top-4 flex h-9 w-9 -translate-y-1 items-center justify-center rounded-full bg-white text-black opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+          {w.external ? (
+            <ArrowUpRight className="h-4 w-4" />
+          ) : (
+            <ArrowRight className="h-4 w-4" />
+          )}
         </span>
       </div>
 
-      {/* bottom */}
-      <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-        <p className="mb-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-400">
+      {/* text below */}
+      <div className="mt-5 border-t border-white/10 pt-4">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500">
           {w.category} · {w.year}
         </p>
-        <div className="flex items-end justify-between gap-4">
-          <h3
-            className={`font-semibold leading-[1.02] tracking-tight ${
-              big
-                ? "text-[clamp(1.9rem,3.4vw,3rem)]"
-                : "text-[clamp(1.6rem,2.6vw,2.25rem)]"
-            }`}
-          >
-            <Silver>{w.title}</Silver>
-          </h3>
-          <span className="mb-1 flex h-12 w-12 shrink-0 translate-y-2 items-center justify-center rounded-full border border-white/25 text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:border-white group-hover:bg-white group-hover:text-black group-hover:opacity-100">
-            {w.external ? (
-              <ArrowUpRight className="h-5 w-5" />
-            ) : (
-              <ArrowRight className="h-5 w-5" />
-            )}
-          </span>
-        </div>
+        <h3 className="mt-2 text-[clamp(1.4rem,2vw,1.9rem)] font-semibold leading-[1.1] tracking-tight">
+          <Silver>{w.title}</Silver>
+        </h3>
+        <p className="mt-3 inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-neutral-500 transition-colors group-hover:text-white">
+          {cta}
+          {w.external ? (
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          ) : (
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+          )}
+        </p>
       </div>
     </Anchor>
   );
@@ -192,23 +182,12 @@ function WorkCard({ w, big }: { w: Work; big?: boolean }) {
 function WorkGallery() {
   return (
     <div className="mx-auto max-w-7xl px-6 lg:px-8">
-      <div className="grid gap-4 md:gap-6">
-        <div className="grid gap-4 md:gap-6 lg:grid-cols-[1.4fr_1fr]">
-          <ScrollReveal>
-            <WorkCard w={work[0]} big />
+      <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
+        {work.map((w, i) => (
+          <ScrollReveal key={w.n} delay={i * 0.08}>
+            <WorkCard w={w} />
           </ScrollReveal>
-          <ScrollReveal delay={0.08}>
-            <WorkCard w={work[1]} />
-          </ScrollReveal>
-        </div>
-        <div className="grid gap-4 md:gap-6 lg:grid-cols-[1fr_1.4fr]">
-          <ScrollReveal>
-            <WorkCard w={work[2]} />
-          </ScrollReveal>
-          <ScrollReveal delay={0.08}>
-            <WorkCard w={work[3]} big />
-          </ScrollReveal>
-        </div>
+        ))}
       </div>
     </div>
   );
@@ -217,70 +196,6 @@ function WorkGallery() {
 /* ------------------------------------------------------------------ *
  *  Creative hero — your name as a "selected layer" on a design canvas
  * ------------------------------------------------------------------ */
-function Anno({
-  className,
-  side,
-  label,
-  value,
-  hasDot,
-  delay,
-}: {
-  className: string;
-  side: "left" | "right";
-  label: string;
-  value: string;
-  hasDot?: boolean;
-  delay: number;
-}) {
-  const line = (
-    <motion.span
-      initial={{ scaleX: 0 }}
-      animate={{ scaleX: 1 }}
-      transition={{ delay: delay + 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className={`h-px w-12 shrink-0 bg-gradient-to-r from-white/10 to-white/45 xl:w-16 ${
-        side === "left" ? "origin-left" : "origin-right"
-      }`}
-    />
-  );
-  const dot = <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/70" />;
-  const chip = (
-    <div className="whitespace-nowrap rounded-lg border border-white/12 bg-white/[0.04] px-3 py-2 backdrop-blur-sm">
-      <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.2em] text-neutral-500">
-        {hasDot && (
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-          </span>
-        )}
-        {label}
-      </span>
-      <span className="mt-0.5 block text-xs font-medium text-white/90">{value}</span>
-    </div>
-  );
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay, duration: 0.5 }}
-      className={`absolute flex items-center gap-2 ${className}`}
-    >
-      {side === "left" ? (
-        <>
-          {chip}
-          {line}
-          {dot}
-        </>
-      ) : (
-        <>
-          {dot}
-          {line}
-          {chip}
-        </>
-      )}
-    </motion.div>
-  );
-}
-
 const HANDLES = [
   "left-0 top-0 -translate-x-1/2 -translate-y-1/2",
   "left-1/2 top-0 -translate-x-1/2 -translate-y-1/2",
@@ -295,21 +210,15 @@ const HANDLES = [
 function HeroCanvas() {
   const bxr = useMotionValue(0);
   const byr = useMotionValue(0);
-  const cxr = useMotionValue(0);
-  const cyr = useMotionValue(0);
   const cfg = { stiffness: 120, damping: 18, mass: 0.4 };
   const bx = useSpring(bxr, cfg);
   const by = useSpring(byr, cfg);
-  const cx = useSpring(cxr, cfg);
-  const cy = useSpring(cyr, cfg);
 
   const onMove = (e: React.MouseEvent<HTMLElement>) => {
     const nx = e.clientX / window.innerWidth - 0.5;
     const ny = e.clientY / window.innerHeight - 0.5;
     bxr.set(nx * 10);
     byr.set(ny * 10);
-    cxr.set(nx * -26);
-    cyr.set(ny * -26);
   };
 
   return (
@@ -334,17 +243,6 @@ function HeroCanvas() {
         transition={{ duration: 1, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
         className="pointer-events-none absolute bottom-0 left-1/2 top-0 hidden w-px -translate-x-1/2 origin-center bg-[repeating-linear-gradient(0deg,rgba(255,255,255,0.13)_0_6px,transparent_6px_12px)] lg:block"
       />
-
-      {/* annotation chips (desktop) — parallax layer */}
-      <motion.div
-        style={{ x: cx, y: cy }}
-        className="pointer-events-none absolute inset-0 z-20 hidden lg:block"
-      >
-        <Anno className="left-[6%] top-[27%]" side="left" label="Focus" value="GRC · Tax · SAP · ERP" delay={1.15} />
-        <Anno className="left-[9%] top-[64%]" side="left" label="Based" value="India · Remote-first" delay={1.32} />
-        <Anno className="right-[6%] top-[26%]" side="right" label="Status" value="Available · 2026" hasDot delay={1.05} />
-        <Anno className="right-[8%] top-[64%]" side="right" label="Track record" value="3+ yrs · 6 domains" delay={1.24} />
-      </motion.div>
 
       {/* center selection cluster — parallax layer */}
       <motion.div
@@ -567,8 +465,7 @@ export default function Home() {
       <section className="border-t border-white/10 py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-8">
           <ScrollReveal>
-            <div className="relative mx-auto w-full max-w-sm">
-              <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-[radial-gradient(circle_at_50%_30%,rgba(200,205,220,0.14),transparent_65%)] blur-2xl" />
+            <GlowingShadow radius="2rem" className="mx-auto w-full max-w-sm">
               <div className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-neutral-900">
                 <img
                   src="/jobs-quote.png"
@@ -577,7 +474,7 @@ export default function Home() {
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-transparent to-transparent" />
               </div>
-            </div>
+            </GlowingShadow>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
@@ -602,46 +499,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===================== CONTACT CTA ===================== */}
-      <section className="px-6 pb-28 lg:px-8">
-        <ScrollReveal>
-          <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[0.03] p-10 md:p-16 lg:p-20">
-            <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[700px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(200,205,220,0.12),transparent_65%)] blur-3xl" />
-            <div className="relative">
-              <p className="mb-6 font-mono text-xs uppercase tracking-[0.25em] text-neutral-500">
-                ( 03 — Let&apos;s talk )
-              </p>
-              <h2 className="max-w-3xl text-[clamp(2.25rem,6vw,5rem)] font-semibold leading-[0.98] tracking-tight">
-                <Silver>Let&apos;s build something worth shipping.</Silver>
-              </h2>
-              <p className="mt-7 max-w-lg text-lg leading-relaxed text-neutral-400">
-                Open to product design roles and select freelance — especially
-                regulated, high-stakes enterprise work.
-              </p>
-              <div className="mt-10 flex flex-wrap items-center gap-3">
-                <Magnetic strength={0.2}>
-                  <a
-                    href="mailto:kaviprasanth666@gmail.com"
-                    className="group inline-flex items-center gap-2.5 rounded-full bg-white px-8 py-4 text-sm font-semibold text-black transition-transform hover:scale-105 active:scale-95"
-                  >
-                    Start a conversation
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </a>
-                </Magnetic>
-                <a
-                  href="https://www.behance.net/kaviprasath"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-sm font-medium text-white transition-colors hover:bg-white/5"
-                >
-                  View Behance
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-      </section>
     </div>
   );
 }
