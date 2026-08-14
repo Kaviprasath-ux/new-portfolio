@@ -9,7 +9,7 @@ export const siteConfig = {
   location: "Bangalore, India",
   email: "kaviprasanth666@gmail.com",
   linkedin: "https://www.linkedin.com/in/kaviprasath07/",
-  resume: "/resume.pdf",
+  resume: "/Kavi_Prasath_Resume.pdf",
   stats: {
     projects: "15+",
     experience: "3+",

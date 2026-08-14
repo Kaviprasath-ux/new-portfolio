@@ -47,6 +47,54 @@ export const projects: Project[] = [
       "https://www.behance.net/gallery/253319867/Enterprise-Tax-Administration-Platform-Product-Design",
   },
   {
+    id: "glimmora-aether",
+    title: "Glimmora Aether",
+    client: "Glimmora",
+    category: "Enterprise · SAP Infrastructure",
+    description:
+      "From infrastructure intent to defensible evidence — a multi-role platform for requesting, approving, executing and governing SAP infrastructure operations, with approval chains, policy gates and audit-ready evidence.",
+    longDescription:
+      "SAP lifecycle intelligence for regulated infrastructure operations — an approval-, request- and evidence-driven system spanning multiple roles and approval chains, designed so every change carries a defensible, audit-ready trail from intent to execution.",
+    image: "/projects/glimmora-aether/cover.png",
+    tags: ["Enterprise", "SAP", "Governance", "RBAC"],
+    year: "2026",
+    duration: "Functional prototype · four weeks",
+    role: "Product Designer",
+    externalUrl: "https://www.behance.net/gallery/254267155/Glimmora-Aether",
+  },
+  {
+    id: "glimmora-aurix",
+    title: "AURIX™",
+    client: "Glimmora · Central Bank of Astoria",
+    category: "AI-Native · Central Bank Supervision",
+    description:
+      "Sovereign supervisory intelligence — from institution-level risk to national financial-system oversight. A supervisory command center spanning institution intelligence, systemic risk, policy simulation, CBDC and AI governance.",
+    longDescription:
+      "An AI-native supervisory platform for a central bank — turning institution-level exposure and risk signals into national financial-system intelligence. Supervisory inbox, institution intelligence, systemic-risk monitoring, stress-testing and policy simulation, CBDC oversight and AI governance, unified around explainable, confidence-scored risk.",
+    image: "/projects/glimmora-aurix/cover.png",
+    tags: ["AI-Native", "Central Bank", "Systemic Risk", "Data Viz"],
+    year: "2026",
+    role: "Product Designer",
+    externalUrl:
+      "https://www.behance.net/gallery/254191621/AURIX-AI-Native-Central-Bank-Supervisory",
+  },
+  {
+    id: "glimmora-autonova",
+    title: "Glimmora Autonova",
+    client: "Glimmora",
+    category: "Automotive · Workforce Intelligence",
+    description:
+      "From training to verified competency — an AI-powered automotive platform connecting technical learning, digital-twin simulation, diagnostic evidence and competency verification across technician and trainer experiences.",
+    longDescription:
+      "An automotive workforce intelligence and training platform — pairing an interactive EV digital twin with guided learning, evidence-driven reinforcement, independent assessment and certification. Designed across technician and trainer experiences so skill development is traceable from first exposure to verified, defensible competency.",
+    image: "/projects/glimmora-autonova/cover.png",
+    tags: ["Automotive", "AI", "Digital Twin", "Workforce"],
+    year: "2026",
+    role: "Product Designer",
+    externalUrl:
+      "https://www.behance.net/gallery/254156603/GLIMMORA-AUTONOVA-Product-Design-Case-Study",
+  },
+  {
     id: "glimmora-relocate",
     title: "Glimmora Relocate",
     client: "Glimmora",
